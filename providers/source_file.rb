@@ -10,5 +10,6 @@ action :install do
     owner owner
     group group
     variables ruby_version: ruby_version
+    cookbook "chruby"
   end
 end
