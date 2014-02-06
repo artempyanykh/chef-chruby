@@ -2,7 +2,7 @@ class Chef
   class Recipe
     def chruby_install(&block)
       attr_box = Chruby::AttrBox.new
-      attr_box.instance_eval(&block)
+      attr_box.instance_eval(&block) if block
 
       version = attr_box.version || node[:chruby][:version]
 
