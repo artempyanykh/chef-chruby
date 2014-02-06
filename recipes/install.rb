@@ -1,3 +1,3 @@
 include_recipe "chruby::default"
 
-chruby_install
+chruby node[:chruby][:version]
