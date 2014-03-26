@@ -46,27 +46,32 @@ chruby cookbook provides the following recipes:
 - `chruby::default` --- include this recipe to get access to LWRPs; chruby won't be installed.
 - `chruby::install` --- include this recipe to get access to LWRPs **AND** to install `chruby` with version defined in `['chruby']['version']` attribute.
 
-How to use LWRPs:
+#### How to use LWRPs:
 
  - `chruby`. Use the following snippet to install **chruby**:
 				
 		chruby "version.of.chruby"
 		
 	Currently only `install` action is supported.
+
 - `chruby_gem`. If you need to install gem under specific version of ruby for specific user and group, you can achieve it with the following snippet:
 		
-		chruby_gem "bundler" do
-			ruby_version "2.0.0-p353"
-			user "deploy"
-			group "deploy"
-		end
+        chruby_gem "bundler" do
+          ruby_version "2.0.0-p353"
+          user "deploy"
+          group "deploy"
+        end
+
+    It is important to note, that you should build the specified version of ruby in advance.
+
 - `chruby_source_file`. The name could be misleading , but I couldn't think of a better one. This LWRP generates file, which **sources** chruby and sets up specified version of ruby as default, and places it the the specified place. The following snippet could help to understand:
 		
-		chruby_source_file "/home/deploy/sources.d/chruby.sh" do
-			user "deploy"
-			group "deploy"
-			ruby_version "2.0.0-p353"
-		end
+        chruby_source_file "/home/deploy/sources.d/chruby.sh" do
+          user "deploy"
+          group "deploy"
+          ruby_version "2.0.0-p353"
+        end
+
 	You may have noticed, that `chruby_source_file` doesn't make any changes to `.bashrc` or `.bash_profile`. That was done intentionally. 
 I don't feel it is right to mess with existing files content. That's why in our **deploy** user's `.bashrc` we source all files in `~/sources.d/`.
 
