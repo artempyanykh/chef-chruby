@@ -64,7 +64,7 @@ chruby cookbook provides the following recipes:
 
     It is important to note, that you should build the specified version of ruby in advance.
 
-- `chruby_source_file`. The name could be misleading , but I couldn't think of a better one. This LWRP generates file, which **sources** chruby and sets up specified version of ruby as default, and places it the the specified place. The following snippet could help to understand:
+- `chruby_source_file`. The name could be misleading , but I couldn't think of a better one. This LWRP generates file, which **sources** chruby and sets up specified version of ruby as default, and places this file at the specified location. The following snippet illustrates this:
 		
         chruby_source_file "/home/deploy/sources.d/chruby.sh" do
           user "deploy"
@@ -72,8 +72,8 @@ chruby cookbook provides the following recipes:
           ruby_version "2.0.0-p353"
         end
 
-	You may have noticed, that `chruby_source_file` doesn't make any changes to `.bashrc` or `.bash_profile`. That was done intentionally. 
-I don't feel it is right to mess with existing files content. That's why in our **deploy** user's `.bashrc` we source all files in `~/sources.d/`.
+	You may have noticed, that `chruby_source_file` doesn't make any changes to `.bashrc` or `.bash_profile`. This was done intentionally. 
+I don't feel it's right to mess with existing files' content. That's why in our **deploy** user's `.bashrc` we source all files that are in `~/sources.d/` directory.
 
 Motto
 ------------
