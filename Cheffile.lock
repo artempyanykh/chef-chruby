@@ -1,0 +1,14 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    ark (0.7.0)
+
+PATH
+  remote: ./
+  specs:
+    chruby (0.1.0)
+      ark (>= 0.0.0)
+
+DEPENDENCIES
+  chruby (>= 0)
+
